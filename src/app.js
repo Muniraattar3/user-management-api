@@ -29,4 +29,9 @@ app.use("/api/users", userRoutes); // plural is better
 // Global error handler
 app.use(errorHandler);
 
+app.get("/", (req, res) => {
+  res.send("User Management API is running 🚀");
+});
+
+
 export default app;
