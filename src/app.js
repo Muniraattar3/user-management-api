@@ -18,14 +18,12 @@ app.use(cors({
 // Body parser
 app.use(express.json());
 
-// Rate limiter - should come BEFORE routes
-app.use(limiter);
 
 // Routes
 //app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes); // plural is better
 
-
+app.use(limiter);
 
 // Global error handler
 app.use(errorHandler);
