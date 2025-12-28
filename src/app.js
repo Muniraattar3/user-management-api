@@ -6,33 +6,30 @@ import limiter from "./middlewares/rateLimiter.js";
 
 const app = express();
 
-// 1️⃣ Enable CORS
-const allowedOrigins = [
-  "http://localhost:5173",                // Vite dev
-  "https://auth-client-53qh.vercel.app"  // Vercel frontend
-];
-
+// ✅ CORS — SIMPLE & SAFE
 app.use(cors({
-  origin: function(origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: [
+    "http://localhost:5173",
+    "https://auth-client-53qh.vercel.app"
+  ],
   credentials: true
 }));
 
-// 2️⃣ Body parser
+// Body parser
 app.use(express.json());
 
-// 3️⃣ Routes
-app.use("/api/users", userRoutes);
-
-// 4️⃣ Rate limiter (after routes)
+// Rate limiter
 app.use(limiter);
 
-// 5️⃣ Global error handler
+// Routes
+app.use("/api/users", userRoutes);
+
+// Health check
+app.get("/", (req, res) => {
+  res.send("User Management API running 🚀");
+});
+
+// Error handler
 app.use(errorHandler);
 
 export default app;
