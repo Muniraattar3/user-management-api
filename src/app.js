@@ -10,7 +10,8 @@ const app = express();
 
 // CORS
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin:[  "http://localhost:5173",
+      "https://user-management-api.onrender.com/api"],
   credentials: true
 }));
 
