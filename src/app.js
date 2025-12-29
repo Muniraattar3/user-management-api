@@ -15,8 +15,6 @@ app.use(cors({
 // Body parser
 app.use(express.json());
 
-// Rate limiter
-app.use(limiter);
 
 // Routes
 app.use("/api/users", userRoutes);
@@ -25,7 +23,7 @@ app.use("/api/users", userRoutes);
 app.get("/", (req, res) => {
   res.send("User Management API running 🚀");
 });
-
+app.use(limiter);
 // Error handler
 app.use(errorHandler);
 
