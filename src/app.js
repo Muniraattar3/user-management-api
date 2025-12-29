@@ -7,11 +7,11 @@ import limiter from "./middlewares/rateLimiter.js";
 const app = express();
 
 // ✅ CORS — SIMPLE & SAFE
-app.use(cors({
+/*app.use(cors({
   origin:"*",
   methods:["GET", "POST","PUT","DELETE"],
 }));
-
+*/
 // Body parser
 app.use(express.json());
 
