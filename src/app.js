@@ -8,12 +8,8 @@ const app = express();
 
 // ✅ CORS — SIMPLE & SAFE
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://auth-client-53qh.vercel.app"
-  ],
+  origin:"*",
   methods:["GET", "POST","PUT","DELETE"],
-  credentials: true
 }));
 
 // Body parser
