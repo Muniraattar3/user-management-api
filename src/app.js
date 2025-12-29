@@ -1,17 +1,21 @@
 import express from "express";
-import cors from "cors";
+//import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import errorHandler from "./middlewares/errorHandler.js";
 import limiter from "./middlewares/rateLimiter.js";
 
 const app = express();
 
-// ✅ CORS — SIMPLE & SAFE
-/*app.use(cors({
-  origin:"*",
-  methods:["GET", "POST","PUT","DELETE"],
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://auth-client-53qh-d0jikh0oj-munira-attars-projects.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true
 }));
-*/
+app.options("*", cors());
+
 // Body parser
 app.use(express.json());
 
